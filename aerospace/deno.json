@@ -1,0 +1,9 @@
+{
+  "tasks": {
+    "setup": "deno run --allow-read --allow-write --allow-env=HOME aerospace.ts setup",
+    "refresh": "deno run --allow-read --allow-write --allow-env=HOME --allow-run=aerospace aerospace.ts refresh"
+  },
+  "imports": {
+    "@std/toml": "jsr:@std/toml@1"
+  }
+}
