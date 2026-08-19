@@ -63,7 +63,6 @@ const SNAPSHOT_REQUEST_COMMAND =
   `exec-and-forget ${SCRIPTS_DIR}/aerospace-workspace-snapshot-request.sh window-detected`;
 const SUMMON_BINDINGS_MARKER = "    # @workspace-summon-bindings";
 const MOVE_BINDINGS_MARKER = "    # @workspace-move-bindings";
-const NAVIGATION_BINDINGS_MARKER = "    # @workspace-navigation-bindings";
 const APP_ASSIGNMENTS_MARKER = "# @app-workspace-assignments";
 const REPO_ROOT_MARKER = "@REPO_ROOT@";
 
@@ -129,10 +128,6 @@ function tomlStringArray(values: readonly string[]): string {
   return `[${values.map(tomlString).join(", ")}]`;
 }
 
-function shellQuote(value: string): string {
-  return `'${value.replaceAll("'", `'\"'\"'`)}'`;
-}
-
 function replaceTemplateMarker(
   template: string,
   marker: string,
@@ -162,16 +157,6 @@ function renderWorkspaceBindings(
       `    ${keyPrefix}${shortcut} = ${tomlString(`${command} ${name}`)}`
     )
     .join("\n");
-}
-
-function renderWorkspaceNavigationBindings(): string {
-  const workspaces = WORKSPACE_ORDER.map(shellQuote).join(" ");
-  const command = (direction: "next" | "prev") =>
-    `exec-and-forget ${SCRIPTS_DIR}/aerospace-focus-workspace.sh ${direction} ${workspaces}`;
-  return [
-    `    alt-left = ${tomlString(command("prev"))}`,
-    `    alt-right = ${tomlString(command("next"))}`,
-  ].join("\n");
 }
 
 function renderWindowRule(
@@ -213,11 +198,6 @@ function renderConfigTemplate(template: string): string {
     source,
     MOVE_BINDINGS_MARKER,
     renderWorkspaceBindings("alt-shift-", "move-node-to-workspace"),
-  );
-  source = replaceTemplateMarker(
-    source,
-    NAVIGATION_BINDINGS_MARKER,
-    renderWorkspaceNavigationBindings(),
   );
   return replaceTemplateMarker(
     source,

@@ -126,7 +126,6 @@ automatically-unhide-macos-hidden-apps = false
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
     # @workspace-move-bindings
-    # @workspace-navigation-bindings
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
     alt-tab = 'workspace-back-and-forth'

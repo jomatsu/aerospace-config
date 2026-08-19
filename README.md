@@ -62,7 +62,6 @@ aerospace/
   .aerospace.toml     template with markers; @REPO_ROOT@ is injected at setup
   deno.json           deno tasks: setup / refresh
 scripts/
-  aerospace-focus-workspace.sh      alt-left/alt-right workspace navigation
   aerospace-workspace-snapshot-request.sh  cheap "dirty marker" for debounced snapshots
   aerospace-workspace-snapshot.sh   screenshot each window / workspace into ~/Pictures
   aerospace-monitor-preset.sh       save/restore workspace-to-monitor layouts (service mode keys 1-3 / shift-1-3)
@@ -74,7 +73,6 @@ scripts/
 | --- | --- |
 | `alt-1..4`, `alt-q..r` | summon workspace |
 | `alt-shift-1..4`, `alt-shift-q..r` | move focused window to workspace |
-| `alt-left` / `alt-right` | focus previous / next workspace on the focused monitor |
 | `alt-h/j/k/l` (+ `shift`) | focus / move within the workspace tree |
 | `alt-slash` / `alt-comma` | cycle tiling / accordion layout |
 | `alt-minus` / `alt-equal` | resize window |
